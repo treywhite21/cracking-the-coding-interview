@@ -48,4 +48,49 @@ export default class LinkedList {
 			this.size += 1;
 		}
 	}
+
+	printList () { 
+		var curr = this.head; 
+		var str = ""; 
+
+		while (curr) { 
+			str += curr.data + " "; 
+			curr = curr.next; 
+		}
+
+		return str;
+	} 
+
+	elementAt (index) {
+		if (this.size === 0 || index > this.size - 1) {
+			return null;
+		}
+
+		var curr = this.head;
+
+		for (let i = 0; i < index; i += 1) {
+			curr = curr.next;
+		}
+
+		return curr;
+	}
+};
+
+export const getUnsortedLinkedList = data => {
+	const linkedList = new LinkedList();
+	data.forEach(num => linkedList.add(num));
+
+	return linkedList;
+};
+
+export const getLoopingLinkedList = data => {
+	const linkedList = new LinkedList();
+	data.forEach(num => linkedList.add(num));
+	
+	const existingElement = linkedList.elementAt(2);
+	const loopStart = linkedList.elementAt(4);
+
+	loopStart.next = existingElement;
+
+	return linkedList;
 };
