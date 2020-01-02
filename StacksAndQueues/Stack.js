@@ -36,10 +36,6 @@ export default class Stack {
 	size () {
 		return this.items.length;
 	}
-
-	sortStack () {
-		
-	}
 }
 
 export class StackWithMin extends Stack {
