@@ -19,13 +19,18 @@ const binarySearch = (arr: number[], x: number): number => {
 const binarySearchRecursive = (arr: number[], x: number, low: number, high: number): number => {
 	if (low > high) return -1;
 
-	let mid = Math.floor((high + low) / 2);
-	if (arr[mid] > x) {
-		return binarySearchRecursive(arr, x, low, mid - 1);
-	} else if (arr[mid] < x) {
-		return binarySearchRecursive(arr, x, mid + 1, high);
+	let mid1 = Math.floor((high + low) / 2);
+	let mid2 = low + Math.floor((high - low) / 2);
+
+	console.log(mid1);
+	console.log(mid2);
+
+	if (arr[mid2] > x) {
+		return binarySearchRecursive(arr, x, low, mid2 - 1);
+	} else if (arr[mid2] < x) {
+		return binarySearchRecursive(arr, x, mid2 + 1, high);
 	} else {
-		return mid;
+		return mid2;
 	}
 }
 
